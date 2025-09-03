@@ -1,0 +1,45 @@
+---
+
+# ⚡ Kinesis Integration
+
+## 📌 Overview
+
+The project integrates **Amazon Kinesis** to enable **real-time data streaming and processing**.
+Kinesis acts as a **pipeline** where data flows in continuously from producers such as IoT devices, applications, or trading systems.
+
+Instead of waiting for batch jobs, Kinesis allows us to process events the moment they arrive.
+This ensures:
+
+* **Low latency** (real-time insights).
+* **Scalability** (can handle millions of records per second).
+* **Reliability** (data retained for 24 hours by default, up to 7 days).
+
+The streamed data is consumed by **AWS Lambda**, processed in real time, and then stored in **Amazon S3** for long-term storage, analytics, or machine learning workflows.
+
+---
+
+## 🔄 Data Flow Explained
+
+1. **Producer (Data Source)**
+
+   * Applications, IoT devices, or bots send continuous event data (e.g., sensor readings, stock ticks, logs).
+   * Each record has a payload and a partition key to decide which shard handles it.
+
+2. **Kinesis Data Stream (Pipeline)**
+
+   * Receives incoming records and temporarily stores them across **shards**.
+   * Provides ordered, scalable, and fault-tolerant ingestion.
+
+3. **AWS Lambda (Real-time Consumer)**
+
+   * Subscribed to the Kinesis stream.
+   * Automatically triggered when new records arrive.
+   * Processes the data (e.g., anomaly detection, filtering, enrichment).
+
+4. **Amazon S3 (Data Lake Storage)**
+
+   * Processed or raw data is stored in S3.
+   * Acts as a central data lake for further analytics, dashboards, or ML pipelines.
+
+---
+
